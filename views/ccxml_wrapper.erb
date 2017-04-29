@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<ccxml version="1.0" xmlns:voxeo="http://community.voxeo.com/xmlns/ccxml">
+
+      <meta name="author" content="Pablo Tomas Borda"/>
+      <meta name="maintainer" content="pablotomasborda@gmail.com"/>
+
+<!-- how long to wait before assuming a session is a runaway and tearing it down -->
+<var name="conn_id"/>
+<var name="dialog_id"/>
+<var name="my_var"/>
+
+<eventprocessor>
+  <transition event="connection.alerting">
+    <assign name="conn_id" expr="event$.connectionid"/>
+    <accept connectionid="conn_id"/>
+  </transition>
+
+  <transition event="connection.connected">
+    <log expr="'**** STARTING DIALOG TO CONNECTION ID ' + conn_id"/>
+     <!-- edit SRC attribute to point to VXML dialog -->
+     <dialogstart src="'http://dev.smartbands.com.ar:8080/smartbands.xml?locale=<%=@locale.to_s%>'" connectionid="conn_id" dialogid="dialog_id"/>
+  </transition>
+
+  <transition event="dialog.exit">
+    <log expr="'**** DIALOG COMPLETE - SENDING POST CALL CLEANUP'"/>
+      <log expr="'event$.values.my_var1 = ' + event$.values.my_var1"/>
+      <assign name="my_var" expr="event$.values.my_var1"/>
+      <!-- sends a POST to our cleanup script -->
+      <send name="'user.call.cleanup'" target="'cleanup.php'" targettype="'basichttp'" namelist="foo"/>
+  </transition>
+
+  <transition event="user.cleanup.successful">
+    <log expr="'**** POST CALL CLEANUP COMPLETED SUCCESSFULLY'"/>
+    <log expr="'**** EXITING SESSION'"/>
+     <exit/>
+  </transition>
+
+  <transition event="error.*">
+    <log expr="'**** ERROR - REASON: ' + event$.reason"/>
+      <exit/>
+  </transition>
+
+  <transition event="connection.disconnected">
+     <!-- send to unconditionally end a runaway session -->
+     <send name="'user.kill.unconditional'" target="session.id" delay="'60s'"/>
+  </transition>
+
+  <transition event="user.kill.unconditional">
+     <log expr="'**** UNCONDITIONAL KILL - EXITING SESSION'"/>
+       <exit/>
+  </transition>
+
+  <transition event="connection.failed">
+    <log expr="'**** CONNECTION FAILED - REASON: ' + event$.reason"/>
+      <exit/>
+  </transition>
+
+</eventprocessor>
+</ccxml>
