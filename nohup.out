@@ -1,0 +1,17 @@
+[2017-04-30 09:47:42] INFO  WEBrick 1.3.1
+[2017-04-30 09:47:42] INFO  ruby 2.1.2 (2014-05-08) [x86_64-linux]
+== Sinatra (v1.4.8) has taken the stage on 8000 for development with backup from WEBrick
+[2017-04-30 09:47:42] INFO  WEBrick::HTTPServer#start: pid=731 port=8000
+== Sinatra has ended his set (crowd applauds)
+[2017-04-30 09:47:44] INFO  going to shutdown ...
+[2017-04-30 09:47:44] INFO  WEBrick::HTTPServer#start done.
+[2017-04-30 09:47:48] INFO  WEBrick 1.3.1
+[2017-04-30 09:47:48] INFO  ruby 2.1.2 (2014-05-08) [x86_64-linux]
+== Sinatra (v1.4.8) has taken the stage on 8000 for development with backup from WEBrick
+[2017-04-30 09:47:48] INFO  WEBrick::HTTPServer#start: pid=733 port=8000
+169.54.106.35, 104.131.159.76 - - [30/Apr/2017 09:48:13] "GET /?nexmo_caller_id=353834652093&session.callerid=unknown&session.accountid=1&session.sessionid=01a00320172acbdf1c062e3b0eba0716&session.parentsessionid=5878541a2b80b57adace8b43ec0db186&nexmo_call_id=5878541a2b80b57adace8b43ec0db186-1&session.virtualplatform=Default&session.calledid=unknown HTTP/1.1" 200 1618 0.0358
+10.1.0.8 - - [30/Apr/2017:09:48:13 EDT] "GET /?nexmo_caller_id=353834652093&session.callerid=unknown&session.accountid=1&session.sessionid=01a00320172acbdf1c062e3b0eba0716&session.parentsessionid=5878541a2b80b57adace8b43ec0db186&nexmo_call_id=5878541a2b80b57adace8b43ec0db186-1&session.virtualplatform=Default&session.calledid=unknown HTTP/1.1" 200 1618
+- -> /?nexmo_caller_id=353834652093&session.callerid=unknown&session.accountid=1&session.sessionid=01a00320172acbdf1c062e3b0eba0716&session.parentsessionid=5878541a2b80b57adace8b43ec0db186&nexmo_call_id=5878541a2b80b57adace8b43ec0db186-1&session.virtualplatform=Default&session.calledid=unknown
+== Sinatra has ended his set (crowd applauds)
+[2017-04-30 12:04:23] INFO  going to shutdown ...
+[2017-04-30 12:04:23] INFO  WEBrick::HTTPServer#start done.

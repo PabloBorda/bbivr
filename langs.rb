@@ -7,5 +7,6 @@ module Locale
     def initialize
       @messages = {}
     end
+    
   end
 end

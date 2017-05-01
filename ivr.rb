@@ -22,7 +22,7 @@ require './public/it_res'
   #end
   
 
-  set :port, 8080
+  set :port, 8000
   set :bind, '0.0.0.0'
   
   
@@ -33,8 +33,8 @@ require './public/it_res'
   
   
   
-  get '/smartbands.xml*' do
-    locale = params[:locale].to_s
+  get '/' do
+    locale = 'en'.to_s
     @msgs = (Locale::Texts.new).send(locale)
     @order = ""
     if (params[:order])
@@ -73,3 +73,10 @@ require './public/it_res'
     erb :menuPago
   end
 
+
+  get '/webhook' do
+  
+    output = File.open( "webhooks.log","w" )
+    output << params.inspect
+    output.close    
+  end
