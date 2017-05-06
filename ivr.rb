@@ -11,7 +11,7 @@ require './public/sp_res'
 require './public/en_res'
 require './public/fr_res'
 require './public/it_res'
-
+require 'elasticsearch/transport'
 
 
 
@@ -75,8 +75,8 @@ require './public/it_res'
 
 
   get '/webhook' do
+    client = Elasticsearch::Client.new url: 'https://avnadmin:hkqa8xkbvjmt5c13@brainboost.brainboost-b168.aivencloud.com:17947',
+                          transport_options: { ssl: { ca_file: 'certificate_elastic.txt' } }
+    response = client.perform_request 'PUT', 'bbivr/call/' + params["call-id"],{},params
   
-    output = File.open( "webhooks.log","w" )
-    output << params.inspect
-    output.close    
   end

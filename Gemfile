@@ -1,0 +1,1 @@
+gem 'elasticsearch-transport', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'

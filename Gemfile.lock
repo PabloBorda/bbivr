@@ -1,0 +1,23 @@
+GIT
+  remote: git://github.com/elasticsearch/elasticsearch-ruby.git
+  revision: 8653d9d2a8347f82cde3d61d128530e2256c434b
+  specs:
+    elasticsearch-transport (6.0.0.pre)
+      faraday
+      multi_json
+
+GEM
+  specs:
+    faraday (0.12.1)
+      multipart-post (>= 1.2, < 3)
+    multi_json (1.12.1)
+    multipart-post (2.0.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  elasticsearch-transport!
+
+BUNDLED WITH
+   1.14.6
